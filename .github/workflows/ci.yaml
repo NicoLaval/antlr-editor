@@ -57,6 +57,12 @@ jobs:
         npm ci                                                                                                                                                                                        
         npm run build
 
+  deploy_storybook:
+    runs-on: ubuntu-latest
+    name: Deploy storybook into Github pages
+    steps:
+      - run: npm run deploy-storybook
+
   check_if_version_upgraded:
     name: Check if version upgrade
     if: github.event_name == 'push'
