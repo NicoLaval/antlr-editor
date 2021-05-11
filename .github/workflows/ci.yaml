@@ -63,7 +63,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: actions/setup-node@v2.1.3 
-      - run: yarn deploy-storybook
+      - run: yarn deploy-storybook --ci
 
   check_if_version_upgraded:
     name: Check if version upgrade
