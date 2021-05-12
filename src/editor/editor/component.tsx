@@ -59,23 +59,26 @@ const Editor = ({
     }, [tempCursor]);
 
     useEffect(() => {
-        fetch(suggesterURL[0])
-            .then(res => res.json())
-            .then(res =>
-                res.dataStructure.map((r: any) => ({
-                    ...r,
-                    label: `${r.name.toUpperCase()} (${r.type})`,
-                })),
-            )
-            .then(res => {
-                setVars(res);
-            })
-            .then(() => {
-                setReady(true);
-            })
-            .catch(() => {
-                setReady(true);
-            });
+        if (!Array.isArray(suggesterURL) || suggesterURL.length === 0) setReady(true);
+        else {
+            fetch(suggesterURL[0])
+                .then(res => res.json())
+                .then(res =>
+                    res.dataStructure.map((r: any) => ({
+                        ...r,
+                        label: `${r.name.toUpperCase()} (${r.type})`,
+                    })),
+                )
+                .then(res => {
+                    setVars(res);
+                })
+                .then(() => {
+                    setReady(true);
+                })
+                .catch(() => {
+                    setReady(true);
+                });
+        }
     }, [suggesterURL]);
 
     const didMount = (editor: monaco.editor.IStandaloneCodeEditor, monaco: any, customTools: any) => {

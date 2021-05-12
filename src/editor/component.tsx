@@ -8,8 +8,8 @@ import { getSuggestionsFromRange } from "./grammar/json/suggestions";
 type EditorProps = {
     script: string;
     setScript: (value: string) => void;
-    setScriptChanged: (value: boolean) => void;
-    theme: string;
+    setScriptChanged?: (value: boolean) => void;
+    theme?: string;
     languageVersion: string;
     setErrors: (array: EditorApi.editor.IMarkerData[]) => void;
     suggesterURL: string[];
@@ -29,7 +29,7 @@ const Editor = ({
     const setCursorPosition = useState(new Position(0, 0))[1];
     const [tempCursor] = useState(new Position(0, 0));
 
-    const { id, Lexer: lexer, Parser: parser, grammar, initialRule } = tools;
+    const { id = "default-id", Lexer: lexer, Parser: parser, grammar, initialRule } = tools;
 
     const fullTools = {
         id,
