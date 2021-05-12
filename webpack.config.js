@@ -23,7 +23,8 @@ module.exports = {
         ],
     },
     externals: {
-        react: 'React'
+        'react': 'react', // Case matters here 
+        'react-dom' : 'reactDOM' // Case matters here 
     },
     plugins: [new MonacoWebpackPlugin()],
     resolve: {
