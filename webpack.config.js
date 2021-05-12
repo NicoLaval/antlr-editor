@@ -35,7 +35,8 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         library: {
             name: "antlr-editor",
-            type: "commonjs"
+            type: "commonjs",
+            export: "default"
         }
     },
 };

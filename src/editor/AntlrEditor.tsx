@@ -5,7 +5,7 @@ import EditorLib from "./editor";
 import monarchDefinition from "./monarch.json";
 import { getSuggestionsFromRange } from "./grammar/json/suggestions";
 
-type EditorProps = {
+export type AntlrEditorProps = {
     script: string;
     setScript: (value: string) => void;
     setScriptChanged?: (value: boolean) => void;
@@ -16,16 +16,18 @@ type EditorProps = {
     tools: any;
 };
 
-const Editor = ({
-    script,
-    setScript,
-    setScriptChanged = () => false,
-    theme = "vs-dark",
-    languageVersion,
-    setErrors,
-    suggesterURL,
-    tools,
-}: EditorProps) => {
+export default function AntlrEditor(props: AntlrEditorProps) {
+    const {
+        script,
+        setScript,
+        setScriptChanged = () => false,
+        theme = "vs-dark",
+        languageVersion,
+        setErrors,
+        suggesterURL,
+        tools,
+    } = props;
+
     const setCursorPosition = useState(new Position(0, 0))[1];
     const [tempCursor] = useState(new Position(0, 0));
 
@@ -57,6 +59,4 @@ const Editor = ({
             suggesterURL={suggesterURL}
         />
     );
-};
-
-export default Editor;
+}
