@@ -68,8 +68,8 @@ jobs:
       - name: Build
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          npm ci
-          npm run build-storybook --ci
+          yarn
+          yarn build-storybook --ci
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
