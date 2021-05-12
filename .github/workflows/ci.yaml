@@ -58,18 +58,27 @@ jobs:
         npm run build
 
   deploy_storybook:
+    name: Deploy Storybook on Github Pages
     runs-on: ubuntu-latest
-    name: Deploy storybook into Github pages
+    needs: test
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2.1.3
-      - run: yarn deploy-storybook -- --ci
+      - name: Build
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/checkout@v2.3.1
+        run: |
+          npm install
+          npm run build-storybook
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          branch: gh-pages
+          folder: build
 
   check_if_version_upgraded:
     name: Check if version upgrade
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
-    needs: test
+    needs: deploy_storybook
     outputs:
       from_version: ${{ steps.step1.outputs.from_version }}
       to_version: ${{ steps.step1.outputs.to_version }}
