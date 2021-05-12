@@ -1,6 +1,6 @@
 # Antlr Editor
 
-See example into deployed [Storybook]()
+See example into deployed [Storybook](https://nicolaval.github.io/antlr-editor/index.html)
 
 ## Usage
 
@@ -19,4 +19,8 @@ yarn add antlr-editor
 | suggesterURL    | string[] | -             |
 | tools           | Tools \* | -             |
 
-`Tools` //TODO : define Tools shape
+`Tools`
+
+// TODO:
+// - define Tools shape
+// - refine props description
