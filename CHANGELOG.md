@@ -1,3 +1,9 @@
+### **0.1.3** (2021-05-12)  
+  
+- Only test build with node 15  
+- Attempt at fixing the build  
+- Update README    
+  
 ### **0.1.2** (2021-05-12)  
   
 - Update CI  
