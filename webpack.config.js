@@ -34,7 +34,7 @@ module.exports = {
         filename: "index.js",
         path: path.resolve(__dirname, "dist"),
         library: {
-            name: "antlr-editor",
+            name: "default",
             type: "commonjs",
             export: "default"
         }
