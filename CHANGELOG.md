@@ -1,3 +1,7 @@
+### **0.1.4** (2021-05-12)  
+  
+- Fix exports    
+  
 ### **0.1.3** (2021-05-12)  
   
 - Only test build with node 15  
