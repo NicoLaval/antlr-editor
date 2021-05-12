@@ -23,7 +23,7 @@ module.exports = {
         ],
     },
     externals: {
-        jquery: "react"
+        react: 'React'
     },
     plugins: [new MonacoWebpackPlugin()],
     resolve: {
