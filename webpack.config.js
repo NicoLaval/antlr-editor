@@ -22,6 +22,9 @@ module.exports = {
             },
         ],
     },
+    externals: {
+        jquery: "react"
+    },
     plugins: [new MonacoWebpackPlugin()],
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
