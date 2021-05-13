@@ -1,3 +1,29 @@
+### **0.1.9** (2021-05-13)  
+  
+- Attempt fix webpack  
+- enable experimental mode  
+- try library module    
+  
+### **0.1.8** (2021-05-12)  
+  
+- another try    
+  
+### **0.1.7** (2021-05-12)  
+  
+  
+  
+### **0.1.6** (2021-05-12)  
+  
+- Use external react    
+  
+### **0.1.5** (2021-05-12)  
+  
+  
+  
+### **0.1.4** (2021-05-12)  
+  
+- Fix exports    
+>>>>>>> c5c464e... Update changelog v0.1.9
   
 ### **0.1.3** (2021-05-12)  
   
