@@ -1,3 +1,8 @@
+### **0.1.16** (2021-05-13)  
+  
+- Upgrade to 0.1.16  
+- Fix external deps handling    
+  
 ### **0.1.15** (2021-05-13)  
   
 - Fix externals  
