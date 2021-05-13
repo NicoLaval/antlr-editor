@@ -1,3 +1,9 @@
+### **0.1.19** (2021-05-13)  
+  
+- Upgrade version  
+- Update package.json  
+- Update package.json    
+  
 ### **0.1.18** (2021-05-13)  
   
 - Update externals deps handling    
