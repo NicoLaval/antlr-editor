@@ -1,3 +1,7 @@
+### **0.1.18** (2021-05-13)  
+  
+- Update externals deps handling    
+  
 ### **0.1.17** (2021-05-13)  
   
 - Refine CI  
