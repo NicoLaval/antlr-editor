@@ -1,3 +1,7 @@
+### **0.1.11** (2021-05-13)  
+  
+- Respect the initial design    
+  
 ### **0.1.9** (2021-05-13)  
   
 - Attempt fix webpack  
