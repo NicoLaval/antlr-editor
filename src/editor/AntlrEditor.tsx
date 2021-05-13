@@ -3,7 +3,6 @@ import * as EditorApi from "monaco-editor/esm/vs/editor/editor.api";
 import { Position } from "monaco-editor";
 import EditorLib from "./editor";
 import monarchDefinition from "./monarch.json";
-import { getSuggestionsFromRange } from "./grammar/json/suggestions";
 
 export type AntlrEditorProps = {
     script: string;
@@ -31,7 +30,14 @@ export default function AntlrEditor(props: AntlrEditorProps) {
     const setCursorPosition = useState(new Position(0, 0))[1];
     const [tempCursor] = useState(new Position(0, 0));
 
-    const { id = "default-id", Lexer: lexer, Parser: parser, grammar, initialRule } = tools;
+    const {
+        id = "default-id",
+        Lexer: lexer,
+        Parser: parser,
+        grammar,
+        initialRule,
+        getSuggestionsFromRange = () => [],
+    } = tools;
 
     const fullTools = {
         id,

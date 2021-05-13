@@ -1,6 +1,7 @@
 import { Story, Meta } from "@storybook/react";
 import { EditorForStory, EditorProps } from "./Editor";
 import * as VtlTools from "vtl-2-0-antlr-tools-ts";
+import { getSuggestions } from "./vtl-suggestions";
 import * as JSONTools from "json-antlr-tools-ts";
 
 export default {
@@ -12,7 +13,10 @@ export default {
 const Template: Story<EditorProps> = args => <EditorForStory {...args} />;
 
 export const VTL20 = Template.bind({});
-VTL20.args = { initialScript: "a := 1 + 2;", tools: VtlTools };
+VTL20.args = {
+    initialScript: "a := 1 + 2;",
+    tools: { ...VtlTools, getSuggestionsFromRange: getSuggestions },
+};
 
 export const JSON = Template.bind({});
 JSON.args = { initialScript: '{"key": "value"}', tools: JSONTools };

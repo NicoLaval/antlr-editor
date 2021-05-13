@@ -1,7 +1,11 @@
 import { IRange, languages as Languages } from "monaco-editor";
-import { FUNCTION, INSERT_AS_SNIPPET, KEYWORD, SNIPPET } from "../../editor/utils/constants";
+export const FUNCTION = Languages.CompletionItemKind.Function;
+export const VARIABLE = Languages.CompletionItemKind.Variable;
+export const KEYWORD = Languages.CompletionItemKind.Keyword;
+export const SNIPPET = Languages.CompletionItemKind.Snippet;
+export const INSERT_AS_SNIPPET = Languages.CompletionItemInsertTextRule.InsertAsSnippet;
 
-export const getSuggestionsFromRange = (range: IRange) => {
+export const getSuggestions = (range: IRange) => {
     return [
         {
             label: "eval",
