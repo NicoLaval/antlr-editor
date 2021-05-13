@@ -1,3 +1,9 @@
+### **0.1.9** (2021-05-13)  
+  
+- Attempt fix webpack  
+- enable experimental mode  
+- try library module    
+  
 ### **0.1.8** (2021-05-12)  
   
 - another try    
