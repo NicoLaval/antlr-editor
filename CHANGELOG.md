@@ -1,3 +1,7 @@
+### **0.1.12** (2021-05-13)  
+  
+- Remove ReactDOM    
+  
 ### **0.1.11** (2021-05-13)  
   
 - Respect the initial design    
