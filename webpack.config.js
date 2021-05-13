@@ -38,10 +38,7 @@ module.exports = {
         filename: "index.js",
         path: path.resolve(__dirname, "dist"),
         library: {
-            type: "module",
+            type: "commonjs2"
         }
-    },
-    experiments: {
-        outputModule: true
     },
 };
