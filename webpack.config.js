@@ -24,7 +24,7 @@ module.exports = {
     },
     externals: {
         'react': 'react', // Case matters here 
-        'react-dom' : 'reactDOM' // Case matters here 
+        'react-dom': 'reactDOM' // Case matters here 
     },
     plugins: [new MonacoWebpackPlugin()],
     resolve: {
@@ -40,5 +40,8 @@ module.exports = {
         library: {
             type: "module",
         }
+    },
+    experiments: {
+        outputModule: true
     },
 };
