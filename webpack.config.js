@@ -1,4 +1,5 @@
 const path = require("path");
+const nodeExternals = require("webpack-node-externals");
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
@@ -22,9 +23,14 @@ module.exports = {
             },
         ],
     },
-    externals: {
-        'react': 'react', // Case matters here 
-    },
+    externalsPresets: { node: true }, // in order to ignore built-in modules like path, fs, etc.
+    externals: [nodeExternals()],
+    // externals: {
+    //     "antlr4ts": "antlr4ts",
+    //     "monaco-editor": "monaco-editor",
+    //     "react": "react",
+    //     "react-monaco-editor": "^react-monaco-editor",
+    // },
     plugins: [new MonacoWebpackPlugin()],
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
@@ -38,6 +44,6 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         library: {
             type: "commonjs2",
-        }
+        },
     },
 };
