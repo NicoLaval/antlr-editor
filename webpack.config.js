@@ -24,7 +24,7 @@ module.exports = {
         ],
     },
     externalsPresets: { node: true }, // in order to ignore built-in modules like path, fs, etc.
-    externals: ["react", ...nodeExternals()],
+    externals: ["react", nodeExternals()],
     // externals: {
     //     "antlr4ts": "antlr4ts",
     //     "monaco-editor": "monaco-editor",
