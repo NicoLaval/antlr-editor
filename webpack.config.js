@@ -24,7 +24,6 @@ module.exports = {
     },
     externals: {
         'react': 'react', // Case matters here 
-        'react-dom' : 'reactDOM' // Case matters here 
     },
     plugins: [new MonacoWebpackPlugin()],
     resolve: {
@@ -38,9 +37,7 @@ module.exports = {
         filename: "index.js",
         path: path.resolve(__dirname, "dist"),
         library: {
-            name: "default",
-            type: "commonjs",
-            export: "default"
+            type: "commonjs2",
         }
     },
 };
