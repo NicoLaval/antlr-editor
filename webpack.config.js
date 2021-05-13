@@ -26,6 +26,7 @@ module.exports = {
         "antlr4ts": "antlr4ts",
         "monaco-editor": "monaco-editor",
         "react": "react",
+        "react-dom": "react-dom",
         "react-monaco-editor": "react-monaco-editor",
     },
     plugins: [new MonacoWebpackPlugin()],
