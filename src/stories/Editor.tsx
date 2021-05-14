@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Editor from "../editor";
+import { Tools, Variables } from "../model";
 
 export interface EditorProps {
     initialScript: string;
-    tools: any;
+    tools: Tools;
+    variables?: Variables;
+    variableURLs?: string[];
 }
 
 /**
