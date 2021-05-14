@@ -23,8 +23,13 @@ yarn add antlr-editor
 | suggesterURL    | string[] |       -       |
 | tools           | Tools \* |       -       |
 
-`Tools`
+### `Tools`
 
-// TODO:
-// - define Tools shape
-// - refine props description
+| Name                    |     Type      | Default value |
+| ----------------------- | :-----------: | :-----------: |
+| id                      |    string     |       -       |
+| initialRule             |   Function    |       -       |
+| grammar                 |    string     |       -       |
+| Lexer                   | Antlr4 Lexer  |       -       |
+| Parser                  | Antlr4 Parser |       -       |
+| getSuggestionsFromRange |   Function    |   () => []    |

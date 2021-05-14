@@ -1,24 +1,21 @@
 import React, { useState } from "react";
-import Editor from "../editor";
-import { Tools, Variables } from "../model";
-
-export interface EditorProps {
-    initialScript: string;
-    tools: Tools;
-    variables?: Variables;
-    variableURLs?: string[];
-}
+import AntlrEditor from "../editor";
+import { AntlrEditorProps } from "../model";
 
 /**
  * Primary UI component for user interaction
  */
-export const EditorForStory: React.FC<EditorProps> = ({ initialScript, tools }) => {
+export const EditorForStory: React.FC<AntlrEditorProps> = ({
+    initialScript,
+    tools,
+    languageVersion,
+}) => {
     const [script, setScript] = useState(initialScript);
     return (
-        <Editor
+        <AntlrEditor
             script={script}
             setScript={setScript}
-            languageVersion={""}
+            languageVersion={languageVersion}
             setErrors={() => {
                 return null;
             }}

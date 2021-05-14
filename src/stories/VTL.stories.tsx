@@ -1,5 +1,6 @@
 import { Story, Meta } from "@storybook/react";
-import { EditorForStory, EditorProps } from "./Editor";
+import { EditorForStory } from "./Editor";
+import { AntlrEditorProps } from "../model";
 import * as VtlTools from "vtl-2-0-antlr-tools-ts";
 import { getSuggestions } from "./vtl-suggestions";
 import { VariableType, VariableRole } from "../model";
@@ -10,12 +11,13 @@ export default {
     argTypes: { tools: { table: { disable: true } } },
 } as Meta;
 
-const Template: Story<EditorProps> = args => <EditorForStory {...args} />;
+const Template: Story<AntlrEditorProps> = args => <EditorForStory {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
     initialScript: "a := 1 + 2;",
     tools: { ...VtlTools, getSuggestionsFromRange: getSuggestions },
+    languageVersion: "vtl-2-0",
 };
 
 export const Variables = Template.bind({});
@@ -26,11 +28,13 @@ Variables.args = {
         "name": { type: VariableType.STRING, role: VariableRole.IDENTIFIER },
         "age": { type: VariableType.INTEGER, role: VariableRole.MEASURE },
     },
+    languageVersion: "vtl-2-0",
 };
 
 export const VariablesURL = Template.bind({});
 VariablesURL.args = {
     initialScript: "a := 1 + 2;",
     tools: { ...VtlTools, getSuggestionsFromRange: getSuggestions },
-    variableURLs: [],
+    variableURLs: ["https://inseefrlab.github.io/VTL-Lab-Resources/metadata/fideli/structure.json"],
+    languageVersion: "vtl-2-0",
 };
