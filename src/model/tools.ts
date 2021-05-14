@@ -10,3 +10,13 @@ export interface Tools {
     Parser: typeof Parser;
     getSuggestionsFromRange?: (range: IRange) => Languages.CompletionItem[];
 }
+
+export interface CustomTools {
+    id: string;
+    initialRule: string;
+    grammar: string;
+    monarchDefinition: any;
+    lexer: typeof Lexer;
+    parser: typeof Parser;
+    getSuggestionsFromRange: (range: IRange) => Languages.CompletionItem[];
+}

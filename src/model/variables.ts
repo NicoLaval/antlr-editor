@@ -11,9 +11,11 @@ export enum VariableRole {
     DIMENSION = "DIMENSION",
 }
 
-interface Variable {
+export interface Variable {
     type: VariableType;
     role: VariableRole;
+    name?: string;
+    label?: string;
 }
 
 export interface Variables {

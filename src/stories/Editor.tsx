@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AntlrEditor from "../editor";
+import { AntlrEditor } from "../components";
 import { AntlrEditorProps } from "../model";
 
 /**
@@ -9,6 +9,8 @@ export const EditorForStory: React.FC<AntlrEditorProps> = ({
     initialScript,
     tools,
     languageVersion,
+    variables = {},
+    variableURLs = [],
 }) => {
     const [script, setScript] = useState(initialScript);
     return (
@@ -19,7 +21,8 @@ export const EditorForStory: React.FC<AntlrEditorProps> = ({
             setErrors={() => {
                 return null;
             }}
-            suggesterURL={[]}
+            variables={variables}
+            variableURLs={variableURLs}
             tools={tools}
         />
     );

@@ -4,6 +4,8 @@ import { Position } from "monaco-editor/esm/vs/editor/editor.api";
 import MonacoEditor from "react-monaco-editor";
 import { getEditorWillMount } from "./utils/providers";
 import { validate } from "./utils/ParserFacade";
+import { CustomTools, Variables } from "../../model";
+import { buildVariables, buildUniqueVariables } from "./utils/variables";
 
 import "./editor.css";
 
@@ -18,8 +20,9 @@ type EditorProps = {
     setCursorPosition: (e: Position) => void;
     tempCursor: Position;
     setErrors: (array: monaco.editor.IMarkerData[]) => void;
-    suggesterURL: string[];
-    tools: any;
+    variables: Variables;
+    variableURLs: string[];
+    tools: CustomTools;
     languageVersion: string;
 };
 
@@ -34,10 +37,11 @@ const Editor = ({
     setCursorPosition,
     tempCursor,
     setErrors,
-    suggesterURL,
+    variables,
+    variableURLs,
     tools,
 }: EditorProps) => {
-    const [vars, setVars] = useState([]);
+    const [vars, setVars] = useState(buildVariables(variables));
     const [ready, setReady] = useState(false);
 
     const monacoRef = useRef(null);
@@ -59,27 +63,20 @@ const Editor = ({
     }, [tempCursor]);
 
     useEffect(() => {
-        if (!Array.isArray(suggesterURL) || suggesterURL.length === 0) setReady(true);
+        if (!Array.isArray(variableURLs) || variableURLs.length === 0) setReady(true);
         else {
-            fetch(suggesterURL[0])
-                .then(res => res.json())
+            Promise.all(variableURLs.map(v => fetch(v)))
                 .then(res =>
-                    res.dataStructure.map((r: any) => ({
-                        ...r,
-                        label: `${r.name.toUpperCase()} (${r.type})`,
-                    })),
+                    Promise.all(res.map(r => r.json())).then(res => {
+                        setVars(buildUniqueVariables(res));
+                        setReady(true);
+                    }),
                 )
-                .then(res => {
-                    setVars(res);
-                })
-                .then(() => {
-                    setReady(true);
-                })
                 .catch(() => {
                     setReady(true);
                 });
         }
-    }, [suggesterURL]);
+    }, [variableURLs]);
 
     const didMount = (editor: monaco.editor.IStandaloneCodeEditor, monaco: any, customTools: any) => {
         let to: NodeJS.Timeout;
@@ -132,6 +129,7 @@ const Editor = ({
     };
 
     if (!ready) return null;
+
     return (
         <div className="editor-container">
             <MonacoEditor

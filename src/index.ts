@@ -1,1 +1,1 @@
-export { default } from "./editor";
+export { AntlrEditor } from "./components";

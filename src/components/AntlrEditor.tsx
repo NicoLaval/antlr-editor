@@ -1,8 +1,10 @@
 import { useState } from "react";
 import * as EditorApi from "monaco-editor/esm/vs/editor/editor.api";
 import { Position } from "monaco-editor";
-import EditorLib from "./editor";
+import Editor from "./editor";
 import monarchDefinition from "./monarch.json";
+import { Tools, Variables } from "../model";
+import { getDefaultSuggestionsFromRange } from "./default-suggestions";
 
 export type AntlrEditorProps = {
     script: string;
@@ -11,11 +13,12 @@ export type AntlrEditorProps = {
     theme?: string;
     languageVersion: string;
     setErrors: (array: EditorApi.editor.IMarkerData[]) => void;
-    suggesterURL: string[];
-    tools: any;
+    variables: Variables;
+    variableURLs: string[];
+    tools: Tools;
 };
 
-export default function AntlrEditor(props: AntlrEditorProps) {
+export const AntlrEditor = (props: AntlrEditorProps) => {
     const {
         script,
         setScript,
@@ -23,7 +26,8 @@ export default function AntlrEditor(props: AntlrEditorProps) {
         theme = "vs-dark",
         languageVersion,
         setErrors,
-        suggesterURL,
+        variables,
+        variableURLs,
         tools,
     } = props;
 
@@ -36,10 +40,10 @@ export default function AntlrEditor(props: AntlrEditorProps) {
         Parser: parser,
         grammar,
         initialRule,
-        getSuggestionsFromRange = () => [],
+        getSuggestionsFromRange = getDefaultSuggestionsFromRange,
     } = tools;
 
-    const fullTools = {
+    const customTools = {
         id,
         monarchDefinition,
         lexer,
@@ -50,8 +54,8 @@ export default function AntlrEditor(props: AntlrEditorProps) {
     };
 
     return (
-        <EditorLib
-            tools={fullTools}
+        <Editor
+            tools={customTools}
             resizeLayout={[false, true, 100]}
             script={script}
             setScript={setScript}
@@ -61,8 +65,8 @@ export default function AntlrEditor(props: AntlrEditorProps) {
             setCursorPosition={setCursorPosition}
             tempCursor={tempCursor}
             setErrors={setErrors}
-            // TODO: enable several dataset suggestions
-            suggesterURL={suggesterURL}
+            variables={variables}
+            variableURLs={variableURLs}
         />
     );
-}
+};

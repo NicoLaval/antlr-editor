@@ -35,6 +35,9 @@ export const VariablesURL = Template.bind({});
 VariablesURL.args = {
     initialScript: "a := 1 + 2;",
     tools: { ...VtlTools, getSuggestionsFromRange: getSuggestions },
-    variableURLs: ["https://inseefrlab.github.io/VTL-Lab-Resources/metadata/fideli/structure.json"],
+    variableURLs: [
+        "https://inseefrlab.github.io/VTL-Lab-Resources/metadata/fideli/structure.json",
+        "https://inseefrlab.github.io/VTL-Lab-Resources/metadata/crabe/structure.json",
+    ],
     languageVersion: "vtl-2-0",
 };

@@ -6,6 +6,7 @@ import { createLexer, createParser } from "./ParserFacade";
 import { TokensProvider } from "./tokensProvider";
 import { VocabularyPack } from "./vocabularyPack";
 import { VARIABLE } from "./constants";
+import { CustomTools, Variable } from "../../../model";
 
 export const getTheme = (): EditorApi.editor.IStandaloneThemeData => {
     return {
@@ -42,7 +43,7 @@ export const getBracketsConfiguration = (): languages.LanguageConfiguration => {
     };
 };
 
-export const getEditorWillMount = (tools: any) => (variables: any) => {
+export const getEditorWillMount = (tools: CustomTools) => (variables: Variable[]) => {
     const tokensProvider: TokensProvider = new TokensProvider(tools);
     const { id } = tools;
     return (monaco: typeof EditorApi) => {
@@ -56,19 +57,19 @@ export const getEditorWillMount = (tools: any) => (variables: any) => {
     };
 };
 
-const buildGrammarGraph = (tools: any) => {
+const buildGrammarGraph = (tools: CustomTools) => {
     const { lexer: Lexer, parser: Parser, grammar } = tools;
     const lexer = createLexer(Lexer)("");
     const parser = createParser({ Lexer, Parser })("");
-    const vocabulary: VocabularyPack<typeof Lexer, typeof Parser> = new VocabularyPack(lexer, parser);
-    const grammarGraph: GrammarGraph<typeof Lexer, typeof Parser> = new GrammarGraph(
+    const vocabulary: VocabularyPack<typeof lexer, typeof parser> = new VocabularyPack(lexer, parser);
+    const grammarGraph: GrammarGraph<typeof lexer, typeof parser> = new GrammarGraph(
         vocabulary,
         grammar,
     );
     return grammarGraph;
 };
 
-const getSuggestions = (tools: any, monaco: typeof EditorApi, variables: Array<any>): any => {
+const getSuggestions = (tools: CustomTools, monaco: typeof EditorApi, variables: Variable[]): any => {
     return function (model: editor.ITextModel, position: Position) {
         const textUntilPosition = model.getValueInRange({
             startLineNumber: 1,
@@ -114,10 +115,8 @@ const getSuggestions = (tools: any, monaco: typeof EditorApi, variables: Array<a
             insertText: name,
             range,
         }));
-        const suggestions = [...suggestionList, ...array, ...vars];
-
         return {
-            suggestions,
+            suggestions: [...suggestionList, ...array, ...vars],
         };
     };
 

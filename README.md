@@ -8,11 +8,44 @@ See example into deployed [Storybook](https://nicolaval.github.io/antlr-editor/i
 
 ## Usage
 
+### Install
+
 ```bash
-yarn add antlr-editor
+yarn add antlr-editor antlr4ts monaco-editor react-monaco-editor
 ```
 
-## Props
+### AntlrEditor
+
+```javascript
+import React, { useState } from "react";
+import { AntlrEditor } from "antlr-editor";
+import * as Tools from "my-antlr-lib";
+import { getSuggestions } from "./custom-suggestions";
+
+const Editor = ({}) => {
+    const [script, setScript] = useState("");
+    const [errors, setErros] = useState([]);
+    const customTools = { ...tools, getSuggestionsFromRange: getSuggestions };
+    return (
+        <>
+            <AntlrEditor
+                script={script}
+                setScript={setScript}
+                languageVersion="my-language"
+                setErrors={setErrors}
+                variables={{}}
+                variableURLs={[]}
+                tools={Tools}
+            />
+            {errors.length > 0 && <div>{`Errors: ${errors.join(" - ")}`}</div>}
+        </>
+    );
+};
+
+export default Editor;
+```
+
+### AntlrEditor Props
 
 | Name            |   Type   | Default value |
 | --------------- | :------: | :-----------: |
@@ -20,15 +53,17 @@ yarn add antlr-editor
 | setScript       | Function |       -       |
 | languageVersion |  string  |       -       |
 | setErrors       | Function |       -       |
-| suggesterURL    | string[] |       -       |
 | tools           | Tools \* |       -       |
+| theme           |  string  |    vs-dark    |
+| variables       |  Object  |      { }      |
+| variableURLs    | string[] |      [ ]      |
 
-### `Tools`
+### Tools Props
 
 | Name                    |     Type      | Default value |
 | ----------------------- | :-----------: | :-----------: |
 | id                      |    string     |       -       |
-| initialRule             |   Function    |       -       |
+| initialRule             |    string     |       -       |
 | grammar                 |    string     |       -       |
 | Lexer                   | Antlr4 Lexer  |       -       |
 | Parser                  | Antlr4 Parser |       -       |
