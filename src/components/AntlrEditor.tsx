@@ -13,8 +13,8 @@ export type AntlrEditorProps = {
     theme?: string;
     languageVersion: string;
     setErrors: (array: EditorApi.editor.IMarkerData[]) => void;
-    variables: Variables;
-    variableURLs: string[];
+    variables?: Variables;
+    variableURLs?: string[];
     tools: Tools;
 };
 
@@ -26,8 +26,8 @@ export const AntlrEditor = (props: AntlrEditorProps) => {
         theme = "vs-dark",
         languageVersion,
         setErrors,
-        variables,
-        variableURLs,
+        variables = {},
+        variableURLs = [],
         tools,
     } = props;
 
