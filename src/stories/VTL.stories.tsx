@@ -8,7 +8,7 @@ import { VariableType, VariableRole } from "../model";
 export default {
     title: "Editor/VTL 2.0",
     component: EditorForStory,
-    argTypes: { tools: { table: { disable: true } } },
+    argTypes: { tools: { table: { disable: true } }, def: { table: { disable: true } } },
 } as Meta;
 
 const Template: Story<StorybookEditorProps> = args => <EditorForStory {...args} />;
