@@ -1,3 +1,9 @@
+### **1.0.1** (2021-05-15)  
+  
+- Upgrade  
+- Fix storybook configuration  
+- Improve documentation    
+  
 # **1.0.0** (2021-05-14)  
   
 - Update README  
