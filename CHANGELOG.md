@@ -1,3 +1,8 @@
+### **1.0.2** (2021-05-15)  
+  
+- Add height & width props  
+- Update README    
+  
 ### **1.0.1** (2021-05-15)  
   
 - Upgrade  
