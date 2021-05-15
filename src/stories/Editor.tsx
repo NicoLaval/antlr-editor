@@ -1,29 +1,30 @@
 import React, { useState } from "react";
 import { AntlrEditor } from "../components";
-import { AntlrEditorProps } from "../model";
+import { StorybookEditorProps } from "../model";
 
-/**
- * Primary UI component for user interaction
- */
-export const EditorForStory: React.FC<AntlrEditorProps> = ({
+export const EditorForStory: React.FC<StorybookEditorProps> = ({
     initialScript,
     tools,
     languageVersion,
     variables = {},
     variableURLs = [],
+    def = "",
 }) => {
     const [script, setScript] = useState(initialScript);
     return (
-        <AntlrEditor
-            script={script}
-            setScript={setScript}
-            languageVersion={languageVersion}
-            setErrors={() => {
-                return null;
-            }}
-            variables={variables}
-            variableURLs={variableURLs}
-            tools={tools}
-        />
+        <>
+            {def && <h3>{def}</h3>}
+            <AntlrEditor
+                script={script}
+                setScript={setScript}
+                languageVersion={languageVersion}
+                setErrors={() => {
+                    return null;
+                }}
+                variables={variables}
+                variableURLs={variableURLs}
+                tools={tools}
+            />
+        </>
     );
 };

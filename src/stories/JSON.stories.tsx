@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react";
 import { EditorForStory } from "./Editor";
-import { AntlrEditorProps } from "../model";
+import { StorybookEditorProps } from "../model";
 import * as JSONTools from "json-antlr-tools-ts";
 
 export default {
@@ -9,7 +9,13 @@ export default {
     argTypes: { tools: { table: { disable: true } } },
 } as Meta;
 
-const Template: Story<AntlrEditorProps> = args => <EditorForStory {...args} />;
+const Template: Story<StorybookEditorProps> = args => <EditorForStory {...args} />;
 
+const defDefault = <h3>Insert JSON script</h3>;
 export const Default = Template.bind({});
-Default.args = { initialScript: '{"key": "value"}', tools: JSONTools, languageVersion: "json" };
+Default.args = {
+    initialScript: '{"key": "value"}',
+    tools: JSONTools,
+    languageVersion: "json",
+    def: defDefault,
+};

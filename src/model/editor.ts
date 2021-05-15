@@ -8,3 +8,12 @@ export interface AntlrEditorProps {
     variableURLs?: string[];
     languageVersion: string;
 }
+
+export interface StorybookEditorProps {
+    initialScript: string;
+    tools: Tools;
+    variables?: Variables;
+    variableURLs?: string[];
+    languageVersion: string;
+    def?: Element;
+}

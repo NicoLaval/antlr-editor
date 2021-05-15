@@ -47,18 +47,24 @@ export default Editor;
 
 ### AntlrEditor Props
 
-| Name            |   Type   | Default value |
-| --------------- | :------: | :-----------: |
-| script          |  string  |       -       |
-| setScript       | Function |       -       |
-| languageVersion |  string  |       -       |
-| setErrors       | Function |       -       |
-| tools           | Tools \* |       -       |
-| theme           |  string  |    vs-dark    |
-| variables       |  Object  |      { }      |
-| variableURLs    | string[] |      [ ]      |
+| Name            |      Type       | Default value |
+| --------------- | :-------------: | :-----------: |
+| script          |     string      |       -       |
+| setScript       |    Function     |       -       |
+| languageVersion |     string      |       -       |
+| setErrors       |    Function     |       -       |
+| tools           |    Tools \*     |       -       |
+| theme           |     string      |    vs-dark    |
+| variables       |  Variables \*   |      { }      |
+| variableURLs    | VariableURLs \* |      [ ]      |
 
-### Tools Props
+See details about \* props below
+
+### Props
+
+#### `tools`
+
+`tools` has to be mainly antlr4 auto-generated Lexer & Parser.
 
 | Name                    |     Type      | Default value |
 | ----------------------- | :-----------: | :-----------: |
@@ -70,3 +76,33 @@ export default Editor;
 | getSuggestionsFromRange |   Function    |   () => []    |
 
 Have a look to [VTL 2.0 Antlr Tools](https://github.com/NicoLaval/vtl-2-0-antlr-tools-ts) for example.
+
+#### `variables`
+
+`variables` enable to pass an object to provide auto-suggestion.
+
+The shape of this object is:
+
+```json
+const obj = {
+    "var1": {"type": "STRING", "role": "IDENTIFIER"},
+    "var2": {"type": "INTEGER", "role": "MEASURE"},
+}
+```
+
+#### `variableURLs`
+
+`variableURLs` enable to pass an array of string to fetch to provide auto-suggestion:
+
+```json
+["http://metadata/1", "http://metadata/2"]
+```
+
+The shape of each fetched resources has to be:
+
+```json
+[
+    { "name": "var1", "type": "STRING", "role": "IDENTIFIER" },
+    { "name": "var2", "type": "INTEGER", "role": "MEASURE" }
+]
+```

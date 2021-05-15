@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react";
 import { EditorForStory } from "./Editor";
-import { AntlrEditorProps } from "../model";
+import { StorybookEditorProps } from "../model";
 import * as VtlTools from "vtl-2-0-antlr-tools-ts";
 import { getSuggestions } from "./vtl-suggestions";
 import { VariableType, VariableRole } from "../model";
@@ -11,15 +11,33 @@ export default {
     argTypes: { tools: { table: { disable: true } } },
 } as Meta;
 
-const Template: Story<AntlrEditorProps> = args => <EditorForStory {...args} />;
+const Template: Story<StorybookEditorProps> = args => <EditorForStory {...args} />;
 
+const defDefault = (
+    <h3>
+        Insert VTL 2.0 script (VTL operators suggestion, highlighting & validation are automatically
+        provided)
+    </h3>
+);
 export const Default = Template.bind({});
 Default.args = {
     initialScript: "a := 1 + 2;",
     tools: { ...VtlTools, getSuggestionsFromRange: getSuggestions },
     languageVersion: "vtl-2-0",
+    def: defDefault,
 };
 
+const defVariables = (
+    <>
+        <h3>
+            Insert VTL 2.0 script (VTL operators suggestion, highlighting & validation are automatically
+            provided)
+        </h3>
+        <h4>
+            Injected <i>Variables</i> provide <i>name</i> & <i>age</i> auto-suggestion
+        </h4>
+    </>
+);
 export const Variables = Template.bind({});
 Variables.args = {
     initialScript: "a := 1 + 2;",
@@ -29,8 +47,21 @@ Variables.args = {
         "age": { type: VariableType.INTEGER, role: VariableRole.MEASURE },
     },
     languageVersion: "vtl-2-0",
+    def: defVariables,
 };
 
+const defVariableURLs = (
+    <>
+        <h3>
+            Insert VTL 2.0 script (VTL operators suggestion, highlighting & validation are automatically
+            provided)
+        </h3>
+        <h4>
+            Injected <i>VariablesURL</i> provide lots of variable auto-suggestions: try <i>dirindicsu</i>{" "}
+            or <i>echantillon_id</i> for instance
+        </h4>
+    </>
+);
 export const VariablesURL = Template.bind({});
 VariablesURL.args = {
     initialScript: "a := 1 + 2;",
@@ -40,4 +71,5 @@ VariablesURL.args = {
         "https://inseefrlab.github.io/VTL-Lab-Resources/metadata/crabe/structure.json",
     ],
     languageVersion: "vtl-2-0",
+    def: defVariableURLs,
 };
