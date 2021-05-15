@@ -1,3 +1,7 @@
+### **1.0.3** (2021-05-15)  
+  
+- Update height behaviour    
+  
 ### **1.0.2** (2021-05-15)  
   
 - Add height & width props  
