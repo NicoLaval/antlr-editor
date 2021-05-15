@@ -24,6 +24,8 @@ type EditorProps = {
     variableURLs: string[];
     tools: CustomTools;
     languageVersion: string;
+    height?: string;
+    width?: string;
 };
 
 let errors: any = { value: "" };
@@ -40,6 +42,8 @@ const Editor = ({
     variables,
     variableURLs,
     tools,
+    height = "100%",
+    width = "100%",
 }: EditorProps) => {
     const [vars, setVars] = useState(buildVariables(variables));
     const [ready, setReady] = useState(false);
@@ -136,7 +140,8 @@ const Editor = ({
                 ref={monacoRef}
                 editorWillMount={getEditorWillMount(tools)(vars)}
                 editorDidMount={(e, m) => didMount(e, m, tools)}
-                height="100%"
+                height={height}
+                width={width}
                 language={tools.id}
                 theme={theme}
                 defaultValue=""

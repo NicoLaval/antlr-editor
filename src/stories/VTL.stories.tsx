@@ -1,6 +1,5 @@
 import { Story, Meta } from "@storybook/react";
-import { EditorForStory } from "./Editor";
-import { StorybookEditorProps } from "../model";
+import { EditorForStory, StorybookEditorProps } from "./Editor";
 import * as VtlTools from "vtl-2-0-antlr-tools-ts";
 import { getSuggestions } from "./vtl-suggestions";
 import { VariableType, VariableRole } from "../model";
@@ -11,7 +10,9 @@ export default {
     argTypes: { tools: { table: { disable: true } }, def: { table: { disable: true } } },
 } as Meta;
 
-const Template: Story<StorybookEditorProps> = args => <EditorForStory {...args} />;
+const Template: Story<StorybookEditorProps> = args => (
+    <EditorForStory height="100%" width="100%" {...args} />
+);
 
 const defDefault = (
     <h3>

@@ -16,6 +16,8 @@ export type AntlrEditorProps = {
     variables?: Variables;
     variableURLs?: string[];
     tools: Tools;
+    height?: string;
+    width?: string;
 };
 
 export const AntlrEditor = (props: AntlrEditorProps) => {
@@ -29,6 +31,8 @@ export const AntlrEditor = (props: AntlrEditorProps) => {
         variables = {},
         variableURLs = [],
         tools,
+        height,
+        width,
     } = props;
 
     const setCursorPosition = useState(new Position(0, 0))[1];
@@ -67,6 +71,8 @@ export const AntlrEditor = (props: AntlrEditorProps) => {
             setErrors={setErrors}
             variables={variables}
             variableURLs={variableURLs}
+            height={height}
+            width={width}
         />
     );
 };

@@ -57,6 +57,8 @@ export default Editor;
 | theme           |     string      |    vs-dark    |
 | variables       |  Variables \*   |      { }      |
 | variableURLs    | VariableURLs \* |      [ ]      |
+| height          |     string      |     100%      |
+| width           |     string      |     100%      |
 
 See details about \* props below
 

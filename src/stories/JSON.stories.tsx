@@ -1,6 +1,5 @@
 import { Story, Meta } from "@storybook/react";
-import { EditorForStory } from "./Editor";
-import { StorybookEditorProps } from "../model";
+import { EditorForStory, StorybookEditorProps } from "./Editor";
 import * as JSONTools from "json-antlr-tools-ts";
 
 export default {
