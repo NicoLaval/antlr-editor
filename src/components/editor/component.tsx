@@ -42,7 +42,7 @@ const Editor = ({
     variables,
     variableURLs,
     tools,
-    height = "100%",
+    height = "10em",
     width = "100%",
 }: EditorProps) => {
     const [vars, setVars] = useState(buildVariables(variables));
@@ -135,12 +135,11 @@ const Editor = ({
     if (!ready) return null;
 
     return (
-        <div className="editor-container">
+        <div className="editor-container" style={{ height }}>
             <MonacoEditor
                 ref={monacoRef}
                 editorWillMount={getEditorWillMount(tools)(vars)}
                 editorDidMount={(e, m) => didMount(e, m, tools)}
-                height={height}
                 width={width}
                 language={tools.id}
                 theme={theme}
