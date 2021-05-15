@@ -19,7 +19,7 @@ yarn add antlr-editor antlr4ts monaco-editor react-monaco-editor
 ```javascript
 import React, { useState } from "react";
 import { AntlrEditor } from "antlr-editor";
-import * as Tools from "my-antlr-lib";
+import * as tools from "my-antlr-lib";
 import { getSuggestions } from "./custom-suggestions";
 
 const Editor = ({}) => {
@@ -35,7 +35,7 @@ const Editor = ({}) => {
                 setErrors={setErrors}
                 variables={{}}
                 variableURLs={[]}
-                tools={Tools}
+                tools={customTools}
             />
             {errors.length > 0 && <div>{`Errors: ${errors.join(" - ")}`}</div>}
         </>
