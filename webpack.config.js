@@ -29,7 +29,7 @@ module.exports = {
         "react-dom": "react-dom",
         "react-monaco-editor": "react-monaco-editor",
     },
-    plugins: [new MonacoWebpackPlugin()],
+    plugins: [new MonacoWebpackPlugin({ publicPath: "/" })],
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
     },
