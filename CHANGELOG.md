@@ -1,3 +1,7 @@
+### **1.0.4** (2021-05-20)  
+  
+- Add publicPath to monaco webpack plugin    
+  
 ### **1.0.3** (2021-05-15)  
   
 - Update height behaviour    
