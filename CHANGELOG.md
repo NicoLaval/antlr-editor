@@ -1,3 +1,8 @@
+### **1.1.1** (2021-07-12)  
+  
+- Upgrade to 1.1.1  
+- Add hideLines to style options    
+  
 ## **1.1.0** (2021-07-12)  
   
 - Upgrade to 1.1.0  
