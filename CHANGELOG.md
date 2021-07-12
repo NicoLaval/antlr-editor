@@ -1,3 +1,9 @@
+## **1.1.0** (2021-07-12)  
+  
+- Upgrade to 1.1.0  
+- Add custom style capabilities  
+- Upgrade dependencies    
+  
 ### **1.0.4** (2021-05-20)  
   
 - Add publicPath to monaco webpack plugin    
