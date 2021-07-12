@@ -1,5 +1,5 @@
 export const buildCustomOptions = (options: Record<string, any>): Record<string, any> => {
-    if (!options?.lines)
+    if (options?.hideLines)
         return {
             "glyphMargin": false,
             "folding": false,

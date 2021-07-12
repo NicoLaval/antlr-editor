@@ -29,7 +29,12 @@ Default.args = {
     tools: { ...VtlTools, getSuggestionsFromRange: getSuggestions },
     languageVersion: "vtl-2-0",
     def: defDefault,
-    options: { minimap: true, theme: "vs-dark", style: { height: "150px", width: "100%" } },
+    options: {
+        minimap: true,
+        theme: "vs-dark",
+        hideLines: false,
+        style: { height: "150px", width: "100%" },
+    },
 };
 
 export const Custom = Template.bind({});
@@ -41,6 +46,7 @@ Custom.args = {
     options: {
         minimap: false,
         theme: "vs-light",
+        hideLines: true,
         style: {
             height: "100px",
             width: "30%",

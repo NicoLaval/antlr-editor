@@ -115,7 +115,8 @@ The shape of `options` props has to be:
 ```json
 {
     "minimap": "Values: true | false - Default: true",
-    "theme": "Values: 'vs-dark' | 'vs-light - Default: 'vs-dark'"
+    "theme": "Values: 'vs-dark' | 'vs-light - Default: 'vs-dark'",
+    "hideLines": "Values: true | false - Default: false",
     "style": {
         "cssProperty": "value",
         ...
