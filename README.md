@@ -57,8 +57,7 @@ export default Editor;
 | theme           |     string      |    vs-dark    |
 | variables       |  Variables \*   |      { }      |
 | variableURLs    | VariableURLs \* |      [ ]      |
-| height          |     string      |     10em      |
-| width           |     string      |     100%      |
+| options         |   Options \*    |      {}       |
 
 See details about \* props below
 
@@ -107,4 +106,20 @@ The shape of each fetched resources has to be:
     { "name": "var1", "type": "STRING", "role": "IDENTIFIER" },
     { "name": "var2", "type": "INTEGER", "role": "MEASURE" }
 ]
+```
+
+#### Options
+
+The shape of `options` props has to be:
+
+```json
+{
+    "minimap": "Values: true | false - Default: true",
+    "theme": "Values: 'vs-dark' | 'vs-light - Default: 'vs-dark'"
+    "style": {
+        "cssProperty": "value",
+        ...
+        // Style props are applied to editor container
+    }
+}
 ```

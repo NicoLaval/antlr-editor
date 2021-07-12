@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AntlrEditor } from "../components";
-import { Tools, Variables } from "../model";
+import { Options, Tools, Variables } from "../model";
 
 export interface StorybookEditorProps {
     initialScript: string;
@@ -9,8 +9,7 @@ export interface StorybookEditorProps {
     variableURLs?: string[];
     languageVersion: string;
     def?: Element;
-    height?: string;
-    width?: string;
+    options?: Options;
 }
 
 export const EditorForStory: React.FC<StorybookEditorProps> = ({
@@ -20,8 +19,7 @@ export const EditorForStory: React.FC<StorybookEditorProps> = ({
     variables = {},
     variableURLs = [],
     def = "",
-    height,
-    width,
+    options,
 }) => {
     const [script, setScript] = useState(initialScript);
     return (
@@ -37,8 +35,7 @@ export const EditorForStory: React.FC<StorybookEditorProps> = ({
                 variables={variables}
                 variableURLs={variableURLs}
                 tools={tools}
-                height={height}
-                width={width}
+                options={options}
             />
         </>
     );

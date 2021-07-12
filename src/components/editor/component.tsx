@@ -4,8 +4,9 @@ import { Position } from "monaco-editor/esm/vs/editor/editor.api";
 import MonacoEditor from "react-monaco-editor";
 import { getEditorWillMount } from "./utils/providers";
 import { validate } from "./utils/ParserFacade";
-import { CustomTools, Variables } from "../../model";
+import { CustomTools, Options, Variables } from "../../model";
 import { buildVariables, buildUniqueVariables } from "./utils/variables";
+import { buildCustomOptions, buildStyle } from "./utils/customization";
 
 import "./editor.css";
 
@@ -16,7 +17,6 @@ type EditorProps = {
     script: string;
     setScript: (value: string) => void;
     setScriptChanged: (value: boolean) => void;
-    theme: string;
     setCursorPosition: (e: Position) => void;
     tempCursor: Position;
     setErrors: (array: monaco.editor.IMarkerData[]) => void;
@@ -24,8 +24,7 @@ type EditorProps = {
     variableURLs: string[];
     tools: CustomTools;
     languageVersion: string;
-    height?: string;
-    width?: string;
+    options: Options;
 };
 
 let errors: any = { value: "" };
@@ -35,15 +34,13 @@ const Editor = ({
     script,
     setScript,
     setScriptChanged,
-    theme,
     setCursorPosition,
     tempCursor,
     setErrors,
     variables,
     variableURLs,
     tools,
-    height = "10em",
-    width = "100%",
+    options,
 }: EditorProps) => {
     const [vars, setVars] = useState(buildVariables(variables));
     const [ready, setReady] = useState(false);
@@ -125,26 +122,18 @@ const Editor = ({
         setScriptChanged(true);
     };
 
-    const options = {
-        minimap: {
-            enabled: true,
-        },
-        automaticLayout: true,
-    };
-
     if (!ready) return null;
 
     return (
-        <div className="editor-container" style={{ height }}>
+        <div className="editor-container" style={buildStyle(options)}>
             <MonacoEditor
                 ref={monacoRef}
                 editorWillMount={getEditorWillMount(tools)(vars)}
                 editorDidMount={(e, m) => didMount(e, m, tools)}
-                width={width}
                 language={tools.id}
-                theme={theme}
+                theme={options?.theme || "vs-dark"}
                 defaultValue=""
-                options={options}
+                options={buildCustomOptions(options)}
                 value={script}
                 onChange={onChange}
             />

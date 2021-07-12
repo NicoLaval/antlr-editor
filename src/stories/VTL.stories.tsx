@@ -7,12 +7,15 @@ import { VariableType, VariableRole } from "../model";
 export default {
     title: "Editor/VTL 2.0",
     component: EditorForStory,
-    argTypes: { tools: { table: { disable: true } }, def: { table: { disable: true } } },
+    argTypes: {
+        tools: { table: { disable: true } },
+        def: { table: { disable: true } },
+        initialScript: { table: { disable: true } },
+        languageVersion: { table: { disable: true } },
+    },
 } as Meta;
 
-const Template: Story<StorybookEditorProps> = args => (
-    <EditorForStory height="100%" width="100%" {...args} />
-);
+const Template: Story<StorybookEditorProps> = args => <EditorForStory {...args} />;
 
 const defDefault = (
     <h3>
@@ -26,6 +29,25 @@ Default.args = {
     tools: { ...VtlTools, getSuggestionsFromRange: getSuggestions },
     languageVersion: "vtl-2-0",
     def: defDefault,
+    options: { minimap: true, theme: "vs-dark", style: { height: "150px", width: "100%" } },
+};
+
+export const Custom = Template.bind({});
+Custom.args = {
+    initialScript: "a := 1 + 2;",
+    tools: { ...VtlTools, getSuggestionsFromRange: getSuggestions },
+    languageVersion: "vtl-2-0",
+    def: defDefault,
+    options: {
+        minimap: false,
+        theme: "vs-light",
+        style: {
+            height: "100px",
+            width: "30%",
+            border: "solid 2px black",
+            borderRadius: "5px",
+        },
+    },
 };
 
 const defVariables = (
@@ -49,6 +71,7 @@ Variables.args = {
     },
     languageVersion: "vtl-2-0",
     def: defVariables,
+    options: {},
 };
 
 const defVariableURLs = (
@@ -73,4 +96,5 @@ VariablesURL.args = {
     ],
     languageVersion: "vtl-2-0",
     def: defVariableURLs,
+    options: {},
 };
