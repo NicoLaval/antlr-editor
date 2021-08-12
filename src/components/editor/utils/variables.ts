@@ -12,4 +12,4 @@ export const buildVariables = (variables: Variables) =>
 export const buildUniqueVariables = (variables: any[]) =>
     variables
         .reduce((acc, a) => [...acc, ...a], [])
-        .map((v: any) => ({ ...v, label: `${v.name.toUpperCase()} (${v.type})` }));
+        .map((v: any) => ({ ...v, label: `${v.name.toUpperCase()}${v.type ? ` (${v.type})` : ""}` }));

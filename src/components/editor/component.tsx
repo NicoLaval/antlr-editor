@@ -100,7 +100,10 @@ const Editor = ({
                 });
             }
             const errorsString = monacoErrors.map(e => e.message).reduce((e1, e2) => e1 + ", " + e2, "");
-            if (errorsString !== errors.value) {
+            if (editor.getValue()) {
+                setErrors([]);
+                errors = { value: "" };
+            } else if (errorsString !== errors.value) {
                 setErrors(monacoErrors);
                 errors = { value: errorsString };
             }
