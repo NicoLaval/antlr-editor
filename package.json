@@ -78,7 +78,7 @@
         "ts-loader": "^9.2.3",
         "typescript": "^4.3.5",
         "vtl-2-0-antlr-tools-ts": "^0.1.6",
-        "webpack": "^5.44.0",
+        "webpack": "^4.46.0",
         "webpack-cli": "^4.7.2"
     },
     "peerDependencies": {
