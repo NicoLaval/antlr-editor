@@ -1,3 +1,7 @@
+### **1.1.3** (2021-08-24)  
+  
+- Improve webpack config    
+  
 ### **1.1.2** (2021-08-12)  
   
 - Fix minor issues    
