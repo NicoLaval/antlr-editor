@@ -1,3 +1,8 @@
+### **1.1.4** (2021-08-24)  
+  
+- Upgrade to webpack 5  
+- Downgrade temp to webpack 4    
+  
 ### **1.1.3** (2021-08-24)  
   
 - Improve webpack config    
